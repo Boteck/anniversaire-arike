@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 Surprise ! 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at center, #ffbae1, #ff4fba);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-family: 'Pacifico', cursive;
+    }
+
+    p.intro {
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin-bottom: 30px;
+      padding: 0 10px;
+    }
+
+    .poem-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      border-radius: 18px;
+      padding: 40px 30px;
+      max-width: 560px;
+      width: 90%;
+      box-shadow: 0 0 30px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+    }
+
+    .poem-line {
+      font-size: 1.15rem;
+      line-height: 2;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: revealLine 0.9s ease forwards;
+    }
+
+    .poem-line.blank {
+      height: 1.2rem;
+    }
+
+    @keyframes revealLine {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .back-link {
+      color: white;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-link:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100vh) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    .credit {
+      font-size: 0.75rem;
+      opacity: 0.6;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p.intro {
+        font-size: 1rem;
+      }
+
+      .poem-line {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎁 C'est l'heure de la surprise ! 🎁</h1>
+  <p class="intro">Voici un petit texte rien que pour toi. J'espère qu'il te fera sourire. Tu mérites tout le bonheur du monde, aujourd'hui et toujours. 💖</p>
+
+  <div class="poem-card" id="poemCard">
+    <p class="poem-line">Je voulais juste te dire,</p>
+    <p class="poem-line">avant que la journée ne s'referme,</p>
+    <p class="poem-line">que tu es dans mes pensées</p>
+    <p class="poem-line">plus souvent que je ne l'avoue.</p>
+    <p class="poem-line blank">&nbsp;</p>
+    <p class="poem-line">J'ai essayé de penser à autre chose,</p>
+    <p class="poem-line">de remplir mes journées, mes nuits,</p>
+    <p class="poem-line">mais tout me ramène à toi,</p>
+    <p class="poem-line">comme un chemin qui revient toujours au même endroit.</p>
+    <p class="poem-line blank">&nbsp;</p>
+    <p class="poem-line">Ce n'est pas une habitude,</p>
+    <p class="poem-line">ni une obsession,</p>
+    <p class="poem-line">c'est juste que tu es devenue</p>
+    <p class="poem-line">une partie de comment je vois le monde.</p>
+    <p class="poem-line blank">&nbsp;</p>
+    <p class="poem-line">Alors aujourd'hui, je ne dis pas grand-chose de nouveau.</p>
+    <p class="poem-line">Je dis juste : joyeux anniversaire,</p>
+    <p class="poem-line">et merci d'être celle vers qui je reviens,</p>
+    <p class="poem-line">peu importe où mes pensées m'emmènent.</p>
+  </div>
+
+  <a href="index.html" class="back-link">← Retour à l'accueil</a>
+  <p class="credit">codé par Darky · envoyé par Habibi · initié par Enock</p>
+
+  <script>
+    // Confettis qui tombent, pour l'ambiance
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = ['#ff4fba', '#fff700', '#00f7ff', '#ffffff'][i % 4];
+      confetti.style.animationDelay = (Math.random() * 3) + 's';
+      document.body.appendChild(confetti);
+    }
+
+    // Fait apparaître le poème ligne par ligne
+    const lines = document.querySelectorAll('.poem-line');
+    lines.forEach((line, i) => {
+      line.style.animationDelay = `${i * 0.35}s`;
+    });
+  </script>
+
+</body>
+</html>
